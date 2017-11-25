@@ -1,7 +1,19 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+//Global Cookies Array
+var myCookies={};
+
+//function to save cookies
+function saveCookies(){
+    myCookies["_user"] = document.getElementById("").value;  
+    
+    document.cookie = "";
+    var expriesAtt = new Date(Date.now()+60*1000).toString();
+    var cookieString = "";
+    
+    for (var key in myCookies){
+        cookieString = key+"="+myCookies[key]+";"+expriesAtt+";";
+        document.cookie = cookieString;
+    }
+}
 
 
