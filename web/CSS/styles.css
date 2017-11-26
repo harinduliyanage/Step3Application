@@ -2,12 +2,14 @@ h1{
     text-align: center;
     margin-top: 100px;
 }
-
-.Contain1{
-    margin-left: 20vw;  
-    margin-top: 90px;
-    position: relative;
+#userName-txt{
+    width: 25vw;
 }
+#userName-form{
+    margin-left: 25vw;
+    margin-top: 5vw;
+}
+
 #next-btn{
     margin-top: 25px;
     width: 17vw;

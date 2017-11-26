@@ -15,17 +15,11 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <div class="col-md-12">
-                <h1>Welcome to registration</h1>
-                <div class="Contain1">
-                    <div class="row">
-                        <div class="col-md-4"> User Name : <input class="form-control" type="text" id="userName-txt" /></div>
-                        <div class="col-md-8"><button class="btn btn-primary" type="button" id="next-btn">Next</button></div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-            
+            <h1>Welcome to registration</h1>
+            <form id="userName-form">
+                User Name : <input class="form-control" type="text" id="userName-txt" required="" title="can not move next step with out user name"/>
+                <button class="btn btn-primary" type="submit" id="next-btn">Next</button>
+            </form> 
+        </div>   
     </body>
 </html>
