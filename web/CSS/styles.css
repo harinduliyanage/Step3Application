@@ -4,6 +4,11 @@ h1{
 }
 
 .Contain1{
-    margin-left: 25vw;
+    margin-left: 20vw;  
     margin-top: 90px;
+    position: relative;
+}
+#next-btn{
+    margin-top: 25px;
+    width: 17vw;
 }
