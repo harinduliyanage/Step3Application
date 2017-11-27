@@ -12,5 +12,5 @@ import com.app2.dao.model.User;
  * @author Harindu.sul
  */
 public interface UserDAO extends SuperDAO<User>{
-    
+    public User getUserByUserName(String name) throws Exception;
 }
