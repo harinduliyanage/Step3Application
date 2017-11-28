@@ -7,6 +7,7 @@ package com.app2.controller;
 
 import com.app2.dto.UserDTO;
 import com.app2.service.UserService;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,17 @@ public class WebController {
    @RequestMapping(value = "/3rdStep", method = RequestMethod.GET)
    public String redirect2() {
       return "redirect:/resources/StepThree.html";
+   }
+   
+   @RequestMapping(value = "/getAllData", method = RequestMethod.GET)
+   public @ResponseBody List<UserDTO> getAllUsers (){
+         List<UserDTO> all=null;
+        try {
+            all = userService.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(WebController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return all;
    }
 
 }
