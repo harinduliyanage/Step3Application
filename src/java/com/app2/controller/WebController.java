@@ -61,10 +61,6 @@ public class WebController {
    public @ResponseBody boolean updateUserProfile(@RequestParam(value = "age")String age,
            @RequestParam(value = "phone") String phone,
            @RequestParam(value = "user")String userName) {
-           
-           System.out.println(age);
-           System.out.println(userName);
-           System.out.println(phone);
            boolean update =false;
         try {
             UserDTO userByUserName = userService.getUserByUserName(userName);
