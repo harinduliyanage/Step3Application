@@ -9,6 +9,7 @@ import com.app2.dao.UserDAO;
 import com.app2.model.User;
 import com.app2.dto.UserDTO;
 import com.app2.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,7 +53,18 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<UserDTO> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<User> all = userDAO.getAll();
+        ArrayList<UserDTO> allUsers = new ArrayList<UserDTO>();
+        UserDTO user = new UserDTO();
+        for (User u : all) {
+            user.setId(u.getId());
+            user.setUserName(u.getUserName());
+            user.setAge(u.getAge());
+            user.setPhone(u.getPhone());
+            user.setAddress(u.getAddress());
+            allUsers.add(user);
+        }
+        return allUsers;
     }
 
     @Override
