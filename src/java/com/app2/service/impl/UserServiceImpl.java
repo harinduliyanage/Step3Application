@@ -6,16 +6,20 @@
 package com.app2.service.impl;
 
 import com.app2.dao.UserDAO;
-import com.app2.dao.model.User;
+import com.app2.model.User;
 import com.app2.dto.UserDTO;
 import com.app2.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Harindu.sul
  */
+@Service
+@Transactional
 public class UserServiceImpl implements UserService{
     
     @Autowired
@@ -49,6 +53,18 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserDTO> getAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UserDTO getUserByUserName(String name) throws Exception {
+        User user = userDAO.getUserByUserName(name);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUserName(user.getUserName());
+        userDTO.setAge(user.getAge());
+        userDTO.setId(user.getId());
+        userDTO.setPhone(user.getPhone());
+        userDTO.setAddress(user.getAddress());
+        return userDTO;
     }
     
 }
