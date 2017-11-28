@@ -72,6 +72,22 @@ public class WebController {
         }
       return update;
    }
+   @RequestMapping(value = "/done", method = RequestMethod.POST)
+   public @ResponseBody boolean updateUserProfile(
+           @RequestParam(value = "address")String address,
+           @RequestParam(value = "userName")String userName) {
+           boolean update =false;
+        try {
+            UserDTO userByUserName = userService.getUserByUserName(userName);
+            userByUserName.setAddress(address);
+                update = userService.update(userByUserName);
+
+            update = userService.update(userByUserName);
+        } catch (Exception ex) {
+            Logger.getLogger(WebController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      return update;
+   }
     
    @RequestMapping(value = "/getAllData", method = RequestMethod.GET)
    public @ResponseBody List<UserDTO> getAllUsers (){
