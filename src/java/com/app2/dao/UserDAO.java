@@ -5,7 +5,7 @@
  */
 package com.app2.dao;
 
-import com.app2.dao.model.User;
+import com.app2.model.User;
 
 /**
  *
