@@ -5,6 +5,11 @@
  */
 package com.app2.controller;
 
+import com.app2.dto.UserDTO;
+import com.app2.service.UserService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class WebController {
     
+    @Autowired
+    UserService userService;
+    
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String index() {
       return "redirect:/resources/index.html";
@@ -25,9 +33,20 @@ public class WebController {
    
    @RequestMapping(value = "/SecondStep", method = RequestMethod.POST)
    public @ResponseBody boolean redirect(@RequestParam(value = "userName") String userName) {
-       System.out.println(userName);
-      return true;
+       UserDTO userDTO = new UserDTO();
+       userDTO.setUserName(userName);
+       boolean add=false;
+        try {
+           UserDTO userByUserName = userService.getUserByUserName(userName);
+            if (userByUserName==null) {
+                add = userService.add(userDTO);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(WebController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return add;
    }
+   
    @RequestMapping(value = "/SecondStep", method = RequestMethod.GET)
    public String redirect() {
       return "redirect:/resources/StepTwo.html";
