@@ -38,7 +38,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public boolean update(UserDTO t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        User user = new User();
+        user.setId(t.getId());
+        user.setUserName(t.getUserName());
+        user.setAge(t.getAge());
+        user.setPhone(t.getPhone());
+        user.setAddress(t.getAddress());
+        return userDAO.update(user);
     }
 
     @Override
