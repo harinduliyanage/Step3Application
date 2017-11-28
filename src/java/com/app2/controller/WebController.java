@@ -39,7 +39,7 @@ public class WebController {
        boolean add=false;
         try {
            UserDTO userByUserName = userService.getUserByUserName(userName);
-            if (userByUserName==null) {
+            if (userByUserName.getId()==null) {
                 add = userService.add(userDTO);
             }
         } catch (Exception ex) {
@@ -57,6 +57,26 @@ public class WebController {
       return "redirect:/resources/StepThree.html";
    }
    
+   @RequestMapping(value = "/3rdStep", method = RequestMethod.POST)
+   public @ResponseBody boolean updateUserProfile(@RequestParam(value = "age")String age,
+           @RequestParam(value = "phone") String phone,
+           @RequestParam(value = "user")String userName) {
+           
+           System.out.println(age);
+           System.out.println(userName);
+           System.out.println(phone);
+           boolean update =false;
+        try {
+            UserDTO userByUserName = userService.getUserByUserName(userName);
+            userByUserName.setAge(age);
+            userByUserName.setPhone(phone);
+            update = userService.update(userByUserName);
+        } catch (Exception ex) {
+            Logger.getLogger(WebController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      return update;
+   }
+    
    @RequestMapping(value = "/getAllData", method = RequestMethod.GET)
    public @ResponseBody List<UserDTO> getAllUsers (){
          List<UserDTO> all=null;
