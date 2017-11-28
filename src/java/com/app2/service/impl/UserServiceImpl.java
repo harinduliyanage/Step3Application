@@ -71,11 +71,13 @@ public class UserServiceImpl implements UserService{
     public UserDTO getUserByUserName(String name) throws Exception {
         User user = userDAO.getUserByUserName(name);
         UserDTO userDTO = new UserDTO();
-        userDTO.setUserName(user.getUserName());
-        userDTO.setAge(user.getAge());
-        userDTO.setId(user.getId());
-        userDTO.setPhone(user.getPhone());
-        userDTO.setAddress(user.getAddress());
+        if(user!=null){
+            userDTO.setUserName(name);
+            userDTO.setAge(user.getAge());
+            userDTO.setId(user.getId());
+            userDTO.setPhone(user.getPhone());
+            userDTO.setAddress(user.getAddress());
+        }
         return userDTO;
     }
     
