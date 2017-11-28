@@ -12,5 +12,5 @@ import com.app2.dto.UserDTO;
  * @author Harindu.sul
  */
 public interface UserService extends SuperService<UserDTO>{
-    
+    public UserDTO getUserByUserName(String name) throws Exception;
 }
