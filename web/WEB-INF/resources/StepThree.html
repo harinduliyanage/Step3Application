@@ -47,9 +47,11 @@ and open the template in the editor.
                 url : "/Step3Application2/getAllData",
                 data: {},
                 success:function(data){
+                    var markup="";
                    for(var i=0;i<data.length;i++){
-                        var markup="<tr><td>"+data[i].userName+"</td><td>"+data[i].age+"</td><td>"+data[i].phone+"</td><td>"+data[i].address+"</td></tr>";
-                        $("table tbody").append(markup);
+                        var a="<tr><td>"+data[i].userName+"</td><td>"+data[i].age+"</td><td>"+data[i].phone+"</td><td>"+data[i].address+"</td></tr>";
+                        $("table tbody").append(a);
+                        markup=markup+a;
                    }
                 },
                 error: function (error) {
@@ -58,7 +60,7 @@ and open the template in the editor.
                  });
              });
             var userName= $.cookie("userName");
-             $('#address-form').submit(function (event){
+             $('#address-form').submit(function(event){
                   event.stopPropagation();
                   event.preventDefault();
                  $.ajax({
