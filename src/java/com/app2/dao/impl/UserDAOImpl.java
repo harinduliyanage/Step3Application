@@ -5,8 +5,8 @@
  */
 package com.app2.dao.impl;
 
+import com.app2.model.User;
 import com.app2.dao.UserDAO;
-import com.app2.dao.model.User;
 import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;
