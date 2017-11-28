@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+    margin-top: 100px;
+}
+#userName-txt{
+    width: 25vw;
+}
+#userName-form{
+    margin-left: 25vw;
+    margin-top: 5vw;
+}
+
+#next-btn{
+    margin-top: 25px;
+    width: 17vw;
+}
